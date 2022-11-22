@@ -1,11 +1,19 @@
 package com.ulysseguillot.ststp02.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "categories")
 public class Categorie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
 
-    public Categorie(int id, String nom) {
-        this.id = id;
+    public Categorie() {
+
+    }
+    public Categorie(String nom) {
         this.nom = nom;
     }
 

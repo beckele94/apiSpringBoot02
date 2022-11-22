@@ -35,4 +35,21 @@ public class ArticleController {
     public void add(@RequestBody Article article) {
         articleService.saveArticle(article);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@RequestBody Article article, @PathVariable Integer id) {
+        try {
+            //Article existArticle = articleService.getArticle(id);
+            article.setId(id);
+            articleService.saveArticle(article);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+
+        articleService.deleteArticle(id);
+    }
 }

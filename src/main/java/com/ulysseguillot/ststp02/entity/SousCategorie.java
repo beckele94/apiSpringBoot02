@@ -1,12 +1,23 @@
 package com.ulysseguillot.ststp02.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "souscategories")
 public class SousCategorie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
+    //@ManyToOne
+    //@JoinColumn
     private int idCategorie;
 
-    public SousCategorie(int id, String nom, int idCategorie) {
-        this.id = id;
+    public SousCategorie() {
+
+    }
+
+    public SousCategorie(String nom, int idCategorie) {
         this.nom = nom;
         this.idCategorie = idCategorie;
     }
